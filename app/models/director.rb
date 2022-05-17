@@ -1,0 +1,3 @@
+class Director < ActiveRecord
+
+end
