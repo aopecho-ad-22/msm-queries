@@ -21,27 +21,33 @@
     </th>
 
     <th>
+      Details
     </th>
   </tr>
 
 <% @list_of_directors.each do |director| %>
     <tr>
-      <th>
-        <%= @director.id %>
-      </th>
+      <td>
+        <%= director.id %>
+      </td>
 
-      <th>
-        <%= @director.image %>
-      </th>
+      <td>
+        <img src=<%= director.image %>>
+      </td>
 
-      <th>
-        <%= @director.name %>
-      </th>
+      <td>
+        <%= director.name %>
+      </td>
 
-      <th>
-        <%= @director.dob %>
-      </th>
+      <td>
+        <%= director.dob %>
+      </td>
+
+      <td>
+        <a href="/directors/<%= director.id %>">Show details</a>
+      </td>
     </tr>
+  <% end %>
   </table>
 
 <hr>

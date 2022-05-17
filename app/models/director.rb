@@ -1,3 +1,3 @@
-class Director < ActiveRecord
+class Director < ApplicationRecord
 
 end

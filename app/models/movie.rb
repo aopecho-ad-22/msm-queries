@@ -1,3 +1,3 @@
-class Movie < ActiveRecord
+class Movie < ApplicationRecord
 
 end

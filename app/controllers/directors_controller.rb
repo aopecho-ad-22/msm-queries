@@ -1,12 +1,14 @@
-class DirectorsController < ActionController
+class DirectorsController < ApplicationController
   def index
+    @list_of_directors = Director.all
     render({ :template => "director_templates/index.html.erb"})
   end
 
   def director_details
     director_id = params.fetch("director_id")
-    @director = Director.where({ :id => director_id })
-    render({ :template => "director_templates/index.html.erb"})
+    @director = Director.where({ :id => director_id }).at(0)
+    @filmography = Movie.where({ :director_id => director_id }).at(0)
+    render({ :template => "director_templates/details.html.erb"})
   end
 
   def youngest
