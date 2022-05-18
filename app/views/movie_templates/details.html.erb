@@ -44,13 +44,23 @@
   <dt>
     Image
   </dt>
+
   <dd>
     <img src=<%= @movie.image %>>
   </dd>
 
   <dt>
+    Director
+  </dt>
+  
+  <dd>
+    <%= @movie_director %>
+  </dd>
+
+  <dt>
     Created at
   </dt>
+
   <dd>
     <%= time_ago_in_words(@movie.created_at)%> ago
   </dd>

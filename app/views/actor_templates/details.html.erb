@@ -1,0 +1,118 @@
+<h1>Actor #<%= @actor.id %> details</h1>
+
+<a href="/actors" class="btn btn-block btn-outline-secondary">
+  Go back
+</a>
+
+
+<a href="/delete_actor/<% @actor.id %>" class="btn btn-block btn-outline-secondary">
+  Delete actor
+  <small>(Building this link is not required. It's an optional stretch goal; but, you have the tools if you want to give it a try.)</small>
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @actor.name %>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%= @actor.dob %>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+    <%= @actor.bio %>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src=<%= @actor.image %>>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@actor.created_at)%> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@actor.updated_at)%> ago
+  </dd>
+</dl>
+
+<hr>
+
+<h2>Filmography</h2>
+
+<table border="1">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Image
+    </th>
+
+    <th>
+      Title
+    </th>
+
+    <th>
+      Year
+    </th>
+
+    <th>
+      Role
+    </th>
+
+    <th>
+      Details
+    </th>
+  </tr>
+
+  <% @roles.each do |role| %>
+    <tr>
+      <td>
+        <%= role.movie_id %>
+      </td>
+
+      <td>
+        <% @movie_starred_in = @list_of_movies.where({ :id => role.movie_id }).at(0) %>
+       <img src= <%= @movie_starred_in.image %>>
+      </td>
+#title
+      <td>
+        <%= @movie_starred_in.title %>
+      </td>
+#year
+      <td>
+        <%= @movie_starred_in.year %>
+      </td>
+#role
+      <td>
+        <%= role.name %>
+      </td>
+
+      <td>
+        <a href="/movies/<%= @movie_starred_in.id %>">Show details</a>
+      </td>
+    </tr>
+  <% end %>
+  </table>
