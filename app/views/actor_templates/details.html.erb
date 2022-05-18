@@ -21,7 +21,7 @@
   </dd>
 
   <dt>
-    Dob
+    DOB
   </dt>
   <dd>
     <%= @actor.dob %>
@@ -75,6 +75,10 @@
     </th>
 
     <th>
+      Director
+    </th>
+
+    <th>
       Year
     </th>
 
@@ -97,15 +101,21 @@
         <% @movie_starred_in = @list_of_movies.where({ :id => role.movie_id }).at(0) %>
        <img src= <%= @movie_starred_in.image %>>
       </td>
-#title
+
       <td>
         <%= @movie_starred_in.title %>
       </td>
-#year
+
+      <td>
+        <% @director_id = @movie_starred_in.director_id %>
+        <% @movie_directed_by = @list_of_directors.where({ :id => @director_id }) %>
+        <%= @movie_directed_by.at(0).name %>
+      </td>
+
       <td>
         <%= @movie_starred_in.year %>
       </td>
-#role
+
       <td>
         <%= role.name %>
       </td>
